@@ -26,5 +26,21 @@ function App() {
     </div>
   );
 }
+const [isMessageVisible, setIsMessageVisible] = useState(false);
+const [message, setMessage] = useState({ text: '', type: '' });
+
+const showMessageBox = (text, type) => {
+  setMessage({ text, type });
+  setIsMessageVisible(true);
+  setTimeout(() => setIsMessageVisible(false), 3000);
+};
+
+// JSX: conditionally render message box at top
+{isMessageVisible && (
+  <div className={`fixed top-4 ...`}>
+    {message.text}
+  </div>
+)}
+
 
 export default App;
